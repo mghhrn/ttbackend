@@ -13,4 +13,5 @@ public class UserRestController {
     public ResponseEntity<String> sample() {
         return ResponseEntity.ok("Hello there");
     }
+
 }
