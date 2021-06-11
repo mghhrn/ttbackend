@@ -2,11 +2,14 @@ package ir.mghhrn.ttbackend.exception.handler;
 
 import ir.mghhrn.ttbackend.dto.ErrorDto;
 import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
@@ -22,16 +25,30 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     @Value("${tt.trace:false}")
     private boolean printStackTrace;
 
+    @Autowired
+    private MessageSource messageSource;
+
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<Object> generalExceptionHandler(Exception exception, WebRequest request) {
         return buildErrorResponse(exception, "Unknown error occurred", HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 
+    @ExceptionHandler(TTBusinessException.class)
+    public ResponseEntity<Object> handleBusinessException(TTBusinessException exception, WebRequest request) {
+        String resolvedMessage = messageSource.getMessage(exception.getMessageKey(), exception.getMessageArgs(), exception.getLocale());
+        return buildErrorResponse(exception.getCause(), resolvedMessage, exception.getHttpStatus(), request);
+    }
 
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         return buildErrorResponse(ex, "Dude! Method not supported!", HttpStatus.BAD_REQUEST, request);
+    }
+
+
+    @Override
+    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
+        return buildErrorResponse(ex, "Method argument is not valid", HttpStatus.BAD_REQUEST, request);
     }
 
 

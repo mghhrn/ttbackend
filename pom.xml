@@ -16,6 +16,12 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+	<repositories>
+		<repository>
+			<id>jitpack.io</id>
+			<url>https://jitpack.io</url>
+		</repository>
+	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -58,6 +64,16 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.12.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.github.kavenegar</groupId>
+			<artifactId>kavenegar-java</artifactId>
+			<version>v2.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>io.jsonwebtoken</groupId>
+			<artifactId>jjwt</artifactId>
+			<version>0.9.1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

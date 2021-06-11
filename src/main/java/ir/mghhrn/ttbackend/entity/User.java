@@ -1,5 +1,7 @@
 package ir.mghhrn.ttbackend.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,7 +14,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@Getter
+@Setter
 @Entity
 @Table(schema = "public", name = "user")
 public class User implements UserDetails, Serializable {
