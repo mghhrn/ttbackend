@@ -1,16 +1,14 @@
 package ir.mghhrn.ttbackend.service.impl;
 
 import ir.mghhrn.ttbackend.Repository.UserRepository;
-import ir.mghhrn.ttbackend.dto.LoginDto;
-import ir.mghhrn.ttbackend.dto.SmsVerificationTry;
-import ir.mghhrn.ttbackend.dto.UserTokenDto;
-import ir.mghhrn.ttbackend.dto.VerificationDto;
+import ir.mghhrn.ttbackend.dto.*;
 import ir.mghhrn.ttbackend.entity.User;
 import ir.mghhrn.ttbackend.exception.handler.TTBusinessException;
 import ir.mghhrn.ttbackend.security.JwtTokenType;
 import ir.mghhrn.ttbackend.security.TokenHelper;
 import ir.mghhrn.ttbackend.service.UserService;
 import ir.mghhrn.ttbackend.sms.KavenegarSmsService;
+import ir.mghhrn.ttbackend.util.SecurityUtil;
 import lombok.AllArgsConstructor;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.springframework.cache.CacheManager;
@@ -59,6 +57,7 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
+    @Transactional
     public UserTokenDto verify(VerificationDto verificationDto) {
         SmsVerificationTry smsVerificationTry = cacheManager.getCache(REGISTRATION_CACHE)
                 .get(verificationDto.getCellphone(), SmsVerificationTry.class);
@@ -96,5 +95,18 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(() -> new TTBusinessException("error.user.not.found"));
         return new UserTokenDto(tokenHelper.generateAccessToken(user),
                 refreshToken, tokenHelper.getAccessTokenExpireTimeInMinute(), userId);
+    }
+
+    @Override
+    @Transactional
+    public void updateProfile(ProfileDto profileDto) {
+        User user = userRepository.findById(SecurityUtil.getCurrentUserId())
+                .orElseThrow(() -> new TTBusinessException("error.user.not.found"));
+        if (user.getGender() != null) {
+            throw new TTBusinessException("error.user.profile.update.not.allowed");
+        }
+        user.setGender(profileDto.getGender());
+        user.setAge(profileDto.getAge());
+        userRepository.save(user);
     }
 }

@@ -39,7 +39,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .requestMatchers()
-                    .antMatchers("/api/v1/therapy-session/**")
+                    .antMatchers("/api/v1/therapy-session/**",
+                            "/api/v1/user/profile")
                 .and()
                 .addFilterBefore(new TokenAuthenticationFilter(tokenHelper, userRepository, objectMapper, messageSource), BasicAuthenticationFilter.class)
                 .authorizeRequests()

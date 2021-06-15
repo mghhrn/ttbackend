@@ -1,5 +1,6 @@
 package ir.mghhrn.ttbackend.entity;
 
+import ir.mghhrn.ttbackend.enums.Gender;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
@@ -36,6 +37,13 @@ public class User implements UserDetails, Serializable {
 
     @Column(name = "is_cellphone_validated")
     private Boolean cellphoneValidated;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "gender")
+    private Gender gender;
+
+    @Column(name = "age")
+    private Long age;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "USER_ROLE",

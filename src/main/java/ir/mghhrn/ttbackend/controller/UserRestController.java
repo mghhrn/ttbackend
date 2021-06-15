@@ -1,9 +1,6 @@
 package ir.mghhrn.ttbackend.controller;
 
-import ir.mghhrn.ttbackend.dto.LoginDto;
-import ir.mghhrn.ttbackend.dto.RefreshTokenDto;
-import ir.mghhrn.ttbackend.dto.UserTokenDto;
-import ir.mghhrn.ttbackend.dto.VerificationDto;
+import ir.mghhrn.ttbackend.dto.*;
 import ir.mghhrn.ttbackend.service.UserService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -37,5 +34,11 @@ public class UserRestController {
     @PostMapping("/refresh-token")
     public ResponseEntity<UserTokenDto> refreshAccessToken(@Valid @RequestBody RefreshTokenDto refreshTokenDto) {
         return ResponseEntity.ok(userService.createAccessTokenFromRefreshToken(refreshTokenDto.getRefreshToken()));
+    }
+
+    @PostMapping("/profile")
+    public ResponseEntity<Void> updateProfile(@Valid @RequestBody ProfileDto profileDto) {
+        userService.updateProfile(profileDto);
+        return ResponseEntity.ok().build();
     }
 }

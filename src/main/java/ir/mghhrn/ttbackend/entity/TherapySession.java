@@ -39,9 +39,12 @@ public class TherapySession {
     @Column(name = "volume")
     private Integer volume;
 
+    @Column(name = "user_id", nullable = false)
+    private Long userId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", updatable = false, nullable = false)
-    private User owner;
+    private User user;
 
     @Column(name = "satisfaction_point")
     private Integer satisfactionPoint;
