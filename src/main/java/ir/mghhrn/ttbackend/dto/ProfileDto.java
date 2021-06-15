@@ -16,7 +16,7 @@ import java.io.Serializable;
 public class ProfileDto implements Serializable {
     private static final long serialVersionUID = -4699880980569490401L;
 
-    @NotEmpty
+    @NotNull
     private Gender gender;
 
     @NotNull

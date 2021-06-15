@@ -58,7 +58,7 @@ public class User implements UserDetails, Serializable {
     )
     private List<Role> roles;
 
-    @OneToMany(mappedBy = "owner",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
     private List<TherapySession> therapySessions;
 
     @CreationTimestamp
