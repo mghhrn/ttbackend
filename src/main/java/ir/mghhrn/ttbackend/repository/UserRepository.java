@@ -1,4 +1,4 @@
-package ir.mghhrn.ttbackend.Repository;
+package ir.mghhrn.ttbackend.repository;
 
 import ir.mghhrn.ttbackend.entity.User;
 import org.springframework.data.jpa.repository.EntityGraph;

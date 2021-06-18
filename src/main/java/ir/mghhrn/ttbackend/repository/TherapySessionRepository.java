@@ -1,4 +1,4 @@
-package ir.mghhrn.ttbackend.Repository;
+package ir.mghhrn.ttbackend.repository;
 
 import ir.mghhrn.ttbackend.entity.TherapySession;
 import org.springframework.data.jpa.repository.JpaRepository;

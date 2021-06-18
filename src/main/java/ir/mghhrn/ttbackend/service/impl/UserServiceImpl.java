@@ -1,6 +1,6 @@
 package ir.mghhrn.ttbackend.service.impl;
 
-import ir.mghhrn.ttbackend.Repository.UserRepository;
+import ir.mghhrn.ttbackend.repository.UserRepository;
 import ir.mghhrn.ttbackend.dto.*;
 import ir.mghhrn.ttbackend.entity.User;
 import ir.mghhrn.ttbackend.exception.handler.TTBusinessException;

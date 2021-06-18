@@ -1,7 +1,7 @@
 package ir.mghhrn.ttbackend.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ir.mghhrn.ttbackend.Repository.UserRepository;
+import ir.mghhrn.ttbackend.repository.UserRepository;
 import ir.mghhrn.ttbackend.security.RestAuthenticationEntryPoint;
 import ir.mghhrn.ttbackend.security.TokenAuthenticationFilter;
 import ir.mghhrn.ttbackend.security.TokenHelper;

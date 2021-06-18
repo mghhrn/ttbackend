@@ -1,7 +1,7 @@
 package ir.mghhrn.ttbackend.security;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import ir.mghhrn.ttbackend.Repository.UserRepository;
+import ir.mghhrn.ttbackend.repository.UserRepository;
 import ir.mghhrn.ttbackend.dto.ErrorDto;
 import ir.mghhrn.ttbackend.entity.User;
 import ir.mghhrn.ttbackend.exception.handler.TTBusinessException;

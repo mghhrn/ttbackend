@@ -1,6 +1,6 @@
 package ir.mghhrn.ttbackend.service.impl;
 
-import ir.mghhrn.ttbackend.Repository.TherapySessionRepository;
+import ir.mghhrn.ttbackend.repository.TherapySessionRepository;
 import ir.mghhrn.ttbackend.dto.TherapySessionDto;
 import ir.mghhrn.ttbackend.entity.TherapySession;
 import ir.mghhrn.ttbackend.service.TherapySessionService;
