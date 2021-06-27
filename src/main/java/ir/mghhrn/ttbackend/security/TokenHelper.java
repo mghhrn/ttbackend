@@ -42,7 +42,8 @@ public class TokenHelper {
                 generateAccessToken(user, generateAccessTokenExpirationDate()),
                 generateRefreshToken(user, generateRefreshTokenExpirationDate()),
                 expiresAccessInMinute,
-                user.getId());
+                user.getId(),
+                user.getAge() != null);
     }
 
     public String generateAccessToken(User user, Date expireDate) {

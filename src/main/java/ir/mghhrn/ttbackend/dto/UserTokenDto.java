@@ -10,4 +10,5 @@ public class UserTokenDto {
     private String refreshToken;
     private Long expiresInMinutes; // minute
     private Long userId;
+    private Boolean hasCompletedProfile;
 }

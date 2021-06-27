@@ -94,7 +94,8 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new TTBusinessException("error.user.not.found"));
         return new UserTokenDto(tokenHelper.generateAccessToken(user),
-                refreshToken, tokenHelper.getAccessTokenExpireTimeInMinute(), userId);
+                refreshToken, tokenHelper.getAccessTokenExpireTimeInMinute(),
+                userId, user.getAge() != null);
     }
 
     @Override
