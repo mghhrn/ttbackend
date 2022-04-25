@@ -19,7 +19,5 @@ public class KavenegarSmsService {
 
     public void sendVerificationSms(String receptor, String verificationCode) {
         api.verifyLookup(receptor, verificationCode, otpTemplateName);
-//        String message = String.format(smsMessageFormat, verificationCode);
-//        api.send(null, receptor, message);
     }
 }

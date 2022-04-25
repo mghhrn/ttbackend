@@ -19,6 +19,11 @@ public class TherapySessionServiceImpl implements TherapySessionService {
     private final TherapySessionRepository repository;
 
     @Override
+    public List<TherapySession> findAll() {
+        return repository.findAll();
+    }
+
+    @Override
     @Transactional
     public void saveAll(List<TherapySessionDto> therapySessionDtoList) {
         repository.saveAll(

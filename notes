@@ -1,0 +1,11 @@
+pg_dump -d ttdb -w -U ttuser > ~/dump.sql
+
+Create user ttuser with login createdb;
+Create database ttdb;
+grant all privileges on database ttdb to ttuser ;
+
+psql -d ttdb -U ttuser < ~/dump.sql
+
+
+
+java -jar -Dspring.jpa.hibernate.ddl-auto=validate -Dserver.port=1778 -Djwt.access.expires_in.minute=99999999 ttbackend-1.0.0.jar
