@@ -12,7 +12,7 @@ public class DataController {
 
     private final TherapySessionService therapySessionService;
 
-    @GetMapping("/tr7/h11d3N")
+    @GetMapping("/therapy-session/all")
     public String getAllData(Model model) {
         model.addAttribute("thsList", therapySessionService.findAll());
         return "session";

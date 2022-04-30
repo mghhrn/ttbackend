@@ -14,26 +14,22 @@
         <table class="table table-bordered table-striped">
             <thead>
                 <tr>
+                    <th>user id</th>
                     <th>selected frequency</th>
-                    <th>filtered range</th>
                     <th>audio balance</th>
                     <th>duration</th>
                     <th>volume</th>
-                    <th>user id</th>
                     <th>satisfaction point</th>
-                    <th>created at</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="ths: ${thsList}">
-                    <td th:text="${ths.selectedFrequency}" />
-                    <td th:text="${ths.filteredRange}" />
+                    <td th:text="${ths.userId}" />
+                    <td th:text="${#numbers.formatDecimal(ths.selectedFrequency, 0, 3)}" />
                     <td th:text="${ths.audioBalance}" />
                     <td th:text="${ths.duration}" />
                     <td th:text="${ths.volume}" />
-                    <td th:text="${ths.userId}" />
                     <td th:text="${ths.satisfactionPoint}" />
-                    <td th:text="${ths.createdAt}" />
                 </tr>
             </tbody>
         </table>
