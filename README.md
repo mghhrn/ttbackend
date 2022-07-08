@@ -1,5 +1,5 @@
 # Backednd Webservice for Shenava App
-An application for treatment of tinnitus
+[Shenava](https://github.com/mghhrn/ttapp) is an application for treatment of tinnitus 
 
   
     
